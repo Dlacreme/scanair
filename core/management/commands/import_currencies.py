@@ -16,10 +16,10 @@ class Command(BaseCommand):
         if currencies_wrapper.is_failure():
             raise Exception('Could not fetch available currencies')
         self.println(f'Fetched: [{currencies_wrapper.method}] {currencies_wrapper.url}')
-        state = ModelState()
-        state.adding = True
-        for cur in currencies_wrapper.result.currencies:
-            cur._state = state
+        # state = ModelState()
+        # state.adding = True
+        # for cur in currencies_wrapper.result.currencies:
+        #     cur._state = state
         Currency.objects.bulk_create(currencies_wrapper.result.currencies)
 
     def println(self, str):

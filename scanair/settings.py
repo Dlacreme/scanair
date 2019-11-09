@@ -25,12 +25,14 @@ SECRET_KEY = 'eu$@5ttwn(e4a_3ks)#!=s3$&b*%8!9_2im0!zq5kig5gyfltk'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 # Application definition
 
 INSTALLED_APPS = [
     'django.contrib.contenttypes',
+    'django.contrib.auth',
+    'rest_framework',
 
     'core',
     'currency_layer_api',
@@ -61,12 +63,14 @@ DATABASES = {
     }
 }
 
-# Dev & staging environment
-if DEBUG == True:
-    CURRENCY_LAYER_API = 'http://www.apilayer.net/api'
-    CURRENCY_LAYER_KEY = os.environ.get('CURRENCYLAYER_API_KEY', None)
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [],
+    'DEFAULT_PERMISSION_CLASSES': [],
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+    ]
+}
 
-# Production environment
-else:
-    CURRENCY_LAYER_API = 'http://www.apilayer.net/api'
-    CURRENCY_LAYER_KEY = os.environ.get('CURRENCYLAYER_API_KEY', None)
+## Currency Layer Info
+CURRENCY_LAYER_API = 'http://www.apilayer.net/api'
+CURRENCY_LAYER_KEY = os.environ.get('CURRENCYLAYER_API_KEY', None)

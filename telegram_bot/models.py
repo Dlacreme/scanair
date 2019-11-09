@@ -22,3 +22,12 @@ class Subscription(models.Model):
         null=True
     )
     max_rate = MoneyField(max_digits=14, decimal_places=2)
+
+    @classmethod
+    def new(cls, chat_id, from_currency, to_currency, rate):
+        inst = cls()
+        inst.chat_id = chat_id
+        inst.currency_from = from_currency
+        inst.currency_to = to_currency
+        inst.max_rate = rate
+        return inst

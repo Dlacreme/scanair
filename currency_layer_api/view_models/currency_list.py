@@ -13,5 +13,5 @@ class CurrencyList(BaseViewModel):
     def raw_currency_list(list):
         res = []
         for key, value in list.items():
-            res.append(Currency(key, value))
+            res.append(Currency.new(key, value))
         return res
