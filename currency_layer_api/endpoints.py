@@ -3,6 +3,7 @@ from enum import Enum
 
 class CurrencyLayerCommand(Enum):
     LIST_CURRENCIES = 'list'
+    CHANGE = 'change'
 
 class EndpointsFactory:
 
