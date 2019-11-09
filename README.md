@@ -1,6 +1,6 @@
 # Scanair Telegram BOT
 
-Scanair will watch plane tickets offers and send you a notification when the price is at a below a certain amount.
+Scanair Bot watches the trading rate of 2 currencies and send you a notification if it is below a specific amount.
 
 ## Setup
 
