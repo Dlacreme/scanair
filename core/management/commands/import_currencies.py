@@ -15,7 +15,7 @@ class Command(BaseCommand):
         currencies_wrapper = api.currency_list()
         if currencies_wrapper.is_failure():
             raise Exception('Could not fetch available currencies')
-        print(f'Fetched: [{currencies_wrapper.method}] {currencies_wrapper.url}')
+        self.println(f'Fetched: [{currencies_wrapper.method}] {currencies_wrapper.url}')
         state = ModelState()
         state.adding = True
         for cur in currencies_wrapper.result.currencies:
