@@ -27,12 +27,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['localhost']
 
-
 # Application definition
 
 INSTALLED_APPS = [
     'django.contrib.contenttypes',
 
+    'core',
     'currency_layer_api',
     'telegram_bot',
 ]
@@ -60,3 +60,13 @@ DATABASES = {
         'PORT': os.environ.get('PG_DB_PORT', 5432)
     }
 }
+
+# Dev & staging environment
+if DEBUG == True:
+    CURRENCY_LAYER_API = 'http://www.apilayer.net/api'
+    CURRENCY_LAYER_KEY = os.environ.get('CURRENCYLAYER_API_KEY', None)
+
+# Production environment
+else:
+    CURRENCY_LAYER_API = 'http://www.apilayer.net/api'
+    CURRENCY_LAYER_KEY = os.environ.get('CURRENCYLAYER_API_KEY', None)
