@@ -22,5 +22,6 @@ def webhook(req):
     try:
         subscribe('defaulttest', fr, to, rate)
     except Exception as err:
+        # Currencies provided by user are invalid
         return Response(status = 400, data = {'ok': False, 'description': f'{err}'})
     return Response({'ok': True, 'description': f'You will be notified when {fr} to {to} is below {rate}'})
